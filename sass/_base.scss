@@ -1,0 +1,30 @@
+:root {
+  --color-grey-dark: hsl(0, 0%, 17%);
+  --color-grey: hsl(0, 0%, 59%);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  font-size: 1.8rem;
+  background-image: url(../images/pattern-bg.png);
+  background-size: cover 40%;
+  background-repeat: no-repeat;
+  background-position: top;
+
+  @media only screen and(min-width: 90em) {
+    background-size: contain;
+  }
+}
