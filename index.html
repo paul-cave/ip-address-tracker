@@ -36,7 +36,30 @@
           <img src="./images/icon-arrow.svg" alt="forward arrow" />
         </button>
       </form>
+      <div class="invalid hidden">
+        <svg>
+          <use href="images/icons.svg#icon-alert-circle"></use>
+        </svg>
+        Invalid Search Format
+      </div>
       <div class="info">
+        <div class="info__collapse">
+          <img
+            src="./images/squared-minus.svg"
+            alt="minus icon"
+            class="info__collapse--minus"
+          />
+          <img
+            src="./images/squared-plus.svg"
+            alt="plus icon"
+            class="info__collapse--plus hidden"
+          />
+        </div>
+        <div class="spinner hidden">
+          <svg>
+            <use href="images/icons.svg#icon-loader"></use>
+          </svg>
+        </div>
         <div class="info__section">
           <h3 class="info__heading">IP Address</h3>
           <h2 class="info__text info__text--ip">192.212.174.101</h2>
@@ -63,5 +86,11 @@
         >Frontend Mentor</a
       >. Coded by <a href="#">Your Name Here</a>.
     </div>
+
+    <!-- <div class="spinner">
+          <svg>
+            <use href="src/img/icons.svg#icon-loader"></use>
+          </svg>
+        </div> -->
   </body>
 </html>
