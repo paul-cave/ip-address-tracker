@@ -2,7 +2,6 @@ const axios = require("axios");
 
 const handler = async (event) => {
   const { input } = event.queryStringParameters;
-  console.log(event);
 
   const API_SECRET = process.env.API_SECRET;
   const url = `https://geo.ipify.org/api/v1?apiKey=${API_SECRET}&${input}`;

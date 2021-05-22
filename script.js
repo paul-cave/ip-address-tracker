@@ -20,6 +20,7 @@ class App {
       iconAnchor: [23, 56],
     });
     this._init();
+    this._getUserIp();
     searchButton.addEventListener("click", this._searchClickHandler.bind(this));
     searchInput.addEventListener("input", this._hideInvalid.bind(this));
     collapseBtn.addEventListener("click", this._collapseHandler.bind(this));
@@ -47,8 +48,6 @@ class App {
     this.userInput = searchInput.value;
     this.ipTestRegex = this.ipRegex.test(this.userInput);
     this.domainTestRegex = this.domainRegex.test(this.userInput);
-    console.log(this.userInput);
-
     if (this.ipTestRegex) {
       this.userInput = `ipAddress=${this.userInput}`;
     } else if (this.domainTestRegex) {
@@ -59,7 +58,6 @@ class App {
     }
     this._addSpinner();
     this._updateLocation(this.userInput);
-    console.log(this.userInput);
   }
 
   _hideInvalid(e) {
@@ -85,12 +83,10 @@ class App {
   _getLocationData = async function (userInput = "") {
     try {
       if (this.errorDisplay) this.errorDisplay.remove();
-      console.log(userInput);
       const geo = await fetch(
         `/.netlify/functions/fetch-location?&input=${userInput}`
       );
       const data = await geo.json();
-      console.log(data);
       return data;
     } catch (err) {
       console.error(err);
@@ -118,6 +114,17 @@ class App {
       });
   }
 
+  _getUserIp = async function () {
+    try {
+      const userIp = await fetch("https://www.cloudflare.com/cdn-cgi/trace");
+      const data = await userIp.text();
+      const ipRegex = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/;
+      return `ipAddress=${data.match(ipRegex)[0]}`;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   _searchClickHandler(e) {
     e.preventDefault();
     this._formValidation();
@@ -141,7 +148,12 @@ class App {
   _init() {
     this._loadMap([51.505, -0.09]);
     this._addSpinner();
-    this._updateLocation();
+    this._getUserIp()
+      .then((res) => this._updateLocation(res))
+      .catch((err) => {
+        console.error(err);
+        this._renderError(err);
+      });
   }
 }
 
