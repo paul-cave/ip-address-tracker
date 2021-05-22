@@ -28,6 +28,6 @@ I learned a lot doing this challenge. It is the first API/Async project I've bui
 
 ### Acknowledgements
 
-I was helped massively by another solution to this challenge: [GitHub](https://github.com/tediko/ip-address-tracker) [Frontendmentor](https://www.frontendmentor.io/solutions/ip-tracker-mobile-first-sass-environment-variable-webpack-js-KVNZjJXr_).
+I was helped massively by another solution to this challenge: [GitHub](https://github.com/tediko/ip-address-tracker) [Frontend Mentor](https://www.frontendmentor.io/solutions/ip-tracker-mobile-first-sass-environment-variable-webpack-js-KVNZjJXr_).
 It's where I got the idea for the info collapse button, the loading animation, and using netlify functions to hide the API access key.
 Video tutorial he also mentions: [How To Hide API Keys Using Netlify](https://www.youtube.com/watch?v=m2Dr4L_Ab14)
